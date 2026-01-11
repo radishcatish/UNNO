@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://do45pk2vyjfhw"]
+
+[ext_resource type="Script" uid="uid://f782684f3cb4" path="res://scripts/player_main.gd" id="1_l86uq"]
+[ext_resource type="Shader" uid="uid://62ybptbx7818" path="res://shaders/colorshader.gdshader" id="2_dqkch"]
+[ext_resource type="SpriteFrames" uid="uid://o0kqp6hivjrh" path="res://sprites/unno.aseprite" id="2_qhqgy"]
+[ext_resource type="Script" uid="uid://oy1nbjhvs4yo" path="res://scripts/player_animsound.gd" id="3_xkgla"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qlg0r"]
+shader = ExtResource("2_dqkch")
+shader_parameter/original_colors = PackedColorArray(1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1)
+shader_parameter/replace_colors = PackedColorArray(0.74456227, 0.84418166, 0.9794813, 1, 0.5364689, 0.074294604, 0.14248937, 1, 0.6830772, 0.6830774, 0.6830771, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38lr1"]
+size = Vector2(14, 26)
+
+[node name="Witz" type="CharacterBody2D"]
+script = ExtResource("1_l86uq")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_qlg0r")
+position = Vector2(0, -21)
+sprite_frames = ExtResource("2_qhqgy")
+animation = &"run"
+autoplay = "idle"
+script = ExtResource("3_xkgla")
+
+[node name="Step1" type="AudioStreamPlayer2D" parent="Sprite"]
+
+[node name="Step2" type="AudioStreamPlayer2D" parent="Sprite"]
+
+[node name="Swish1" type="AudioStreamPlayer2D" parent="Sprite"]
+
+[node name="Swish2" type="AudioStreamPlayer2D" parent="Sprite"]
+
+[node name="Whip1" type="AudioStreamPlayer2D" parent="Sprite"]
+
+[node name="Whip2" type="AudioStreamPlayer2D" parent="Sprite"]
+
+[node name="Whip3" type="AudioStreamPlayer2D" parent="Sprite"]
+
+[node name="Whip4" type="AudioStreamPlayer2D" parent="Sprite"]
+
+[node name="Whop1" type="AudioStreamPlayer2D" parent="Sprite"]
+
+[node name="Whop2" type="AudioStreamPlayer2D" parent="Sprite"]
+
+[node name="Whop3" type="AudioStreamPlayer2D" parent="Sprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 35)
+shape = SubResource("RectangleShape2D_38lr1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-7, 22, 7, 22, 0, -26)
+
+[connection signal="hurt" from="." to="." method="_on_hurt"]

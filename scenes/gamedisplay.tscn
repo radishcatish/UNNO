@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8do41wy0tc06"]
+
+[ext_resource type="Script" uid="uid://cptn5hg3ksytn" path="res://scripts/gamedisplay.gd" id="9_itjjb"]
+
+[node name="GameDisplay" type="CanvasLayer"]
+offset = Vector2(20, 20)
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 20, 20)
+script = ExtResource("9_itjjb")
