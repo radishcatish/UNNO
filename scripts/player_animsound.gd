@@ -35,11 +35,10 @@ func _process(_d):
 	match main.state:
 		main.PlayerState.GENERAL:
 			if main.is_on_floor():
-				if ((dir == 1 and main.velocity.x < 0) or (dir == -1 and main.velocity.x > 0)):
-					pass
-				#	play("skid")
+				if ((dir == 1 and main.velocity.x < 0) or (dir == -1 and main.velocity.x > 0)) and I.shift_pressed:
+					play("skidrun")
 				elif abs(main.velocity.x) > 300:
-					if animation != "run":
+					if animation != "run" and animation != "skidrun":
 						play("startrun")
 						await animation_finished
 					play("run", abs(main.velocity.x) / 600)
@@ -47,19 +46,17 @@ func _process(_d):
 					if animation == "run":
 						play("startrun")
 						await animation_finished
-					play("walk")
+					if animation != "skidrun":
+						play("walk")
 				else:
 					play("idle")
 			else:
-				if main.is_on_wall() and false:
-					pass
-				#	play("crouch")
+				if main.is_on_wall():
+					play("onwall")
 				else:
 					play("midair")
-					if animation == "midair":
-						var t = clamp((-main.velocity.y + 300.0) / 500.0, 0.0, 1.0)
-						frame = int(t * 4)
-
+				var t = clamp((-main.velocity.y + 300.0) / 500.0, 0.0, 1.0)
+				frame = int(t * 4)
 func _on_frame_changed():
 	match animation:
 		"walk":

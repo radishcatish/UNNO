@@ -13,7 +13,7 @@ shader_parameter/replace_colors = PackedColorArray(0.74456227, 0.84418166, 0.979
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38lr1"]
 size = Vector2(14, 26)
 
-[node name="Witz" type="CharacterBody2D"]
+[node name="Unno" type="CharacterBody2D"]
 script = ExtResource("1_l86uq")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

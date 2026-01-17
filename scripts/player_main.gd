@@ -22,6 +22,7 @@ func _physics_process(_d):
 
 			velocity.y = -700
 			last_on_floor = 6
+			I.last_z_press = 6
 		if last_on_wall <= 5:
 			sprite.jumpsound()
 			sprite.stepsound()

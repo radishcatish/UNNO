@@ -24,6 +24,7 @@ GameDisplay="*res://scenes/gamedisplay.tscn"
 [display]
 
 window/size/initial_position_type=4
+window/stretch/scale=2.0
 
 [dotnet]
 
