@@ -16,7 +16,7 @@ func _physics_process(_d):
 	
 	velocity.y += 30
 	velocity.y = clamp(velocity.y, -INF, 200) if is_on_wall_only() else velocity.y
-	velocity.y = -100.0 if I.last_z_release == 1 and velocity.y < -100.0 else velocity.y
+	velocity.y = 0 if I.last_z_release == 1 and velocity.y < 0 else velocity.y
 	if I.last_z_press <= 5:
 		if last_on_floor < 5:
 

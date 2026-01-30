@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://do45pk2vyjfhw"]
+[gd_scene load_steps=11 format=3 uid="uid://do45pk2vyjfhw"]
 
 [ext_resource type="Script" uid="uid://f782684f3cb4" path="res://scripts/player_main.gd" id="1_l86uq"]
 [ext_resource type="Shader" uid="uid://62ybptbx7818" path="res://shaders/colorshader.gdshader" id="2_dqkch"]
 [ext_resource type="SpriteFrames" uid="uid://o0kqp6hivjrh" path="res://sprites/unno.aseprite" id="2_qhqgy"]
 [ext_resource type="Script" uid="uid://oy1nbjhvs4yo" path="res://scripts/player_animsound.gd" id="3_xkgla"]
+[ext_resource type="AudioStream" uid="uid://d34102mwj5prp" path="res://sounds/step1.sfxr" id="5_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://cf16f8rw0i505" path="res://sounds/step2.sfxr" id="6_fjrip"]
+[ext_resource type="AudioStream" uid="uid://bx1s4ks5esa0i" path="res://sounds/jump.sfxr" id="7_fjrip"]
+[ext_resource type="AudioStream" uid="uid://bs3ox1ki7klio" path="res://sounds/swish.sfxr" id="7_smehm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qlg0r"]
 shader = ExtResource("2_dqkch")
@@ -20,31 +24,21 @@ script = ExtResource("1_l86uq")
 material = SubResource("ShaderMaterial_qlg0r")
 position = Vector2(0, -21)
 sprite_frames = ExtResource("2_qhqgy")
-animation = &"run"
+animation = &"walk"
 autoplay = "idle"
 script = ExtResource("3_xkgla")
 
 [node name="Step1" type="AudioStreamPlayer2D" parent="Sprite"]
+stream = ExtResource("5_tuyoq")
 
 [node name="Step2" type="AudioStreamPlayer2D" parent="Sprite"]
+stream = ExtResource("6_fjrip")
 
-[node name="Swish1" type="AudioStreamPlayer2D" parent="Sprite"]
+[node name="Swish" type="AudioStreamPlayer2D" parent="Sprite"]
+stream = ExtResource("7_smehm")
 
-[node name="Swish2" type="AudioStreamPlayer2D" parent="Sprite"]
-
-[node name="Whip1" type="AudioStreamPlayer2D" parent="Sprite"]
-
-[node name="Whip2" type="AudioStreamPlayer2D" parent="Sprite"]
-
-[node name="Whip3" type="AudioStreamPlayer2D" parent="Sprite"]
-
-[node name="Whip4" type="AudioStreamPlayer2D" parent="Sprite"]
-
-[node name="Whop1" type="AudioStreamPlayer2D" parent="Sprite"]
-
-[node name="Whop2" type="AudioStreamPlayer2D" parent="Sprite"]
-
-[node name="Whop3" type="AudioStreamPlayer2D" parent="Sprite"]
+[node name="Jump" type="AudioStreamPlayer2D" parent="Sprite"]
+stream = ExtResource("7_fjrip")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 35)
