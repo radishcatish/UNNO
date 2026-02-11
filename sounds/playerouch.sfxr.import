@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://bm1prx73qhtd7"
+path="res://.godot/imported/playerouch.sfxr-9d95c6fdca66a416396c5e5717476983.sample"
+
+[deps]
+
+source_file="res://sounds/playerouch.sfxr"
+dest_files=["res://.godot/imported/playerouch.sfxr-9d95c6fdca66a416396c5e5717476983.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

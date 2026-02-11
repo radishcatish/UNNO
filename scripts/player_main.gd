@@ -1,14 +1,19 @@
 extends Actor
 @onready var sprite: AnimatedSprite2D = $Sprite
+@onready var hitboxes: Node2D = $Hitboxes
+
 var last_on_floor := 10
 var last_off_floor := 10
 var last_on_wall := 10
 var last_wall_normal := 0.0
-enum PlayerState {GENERAL}
+enum PlayerState {GENERAL, ATTACKING}
 var state := PlayerState.GENERAL
 func _ready():
 	health = 8
+	sprite.frame_changed.connect(_frame_changed)
+	sprite.animation_finished.connect(_anim_finished)
 func _physics_process(_d):
+	hitboxes.scale.x = sprite.dir
 	last_on_floor = 0 if is_on_floor() else last_on_floor + 1
 	last_off_floor = 0 if not is_on_floor() else last_off_floor + 1
 	last_on_wall = 0 if is_on_wall_only() else last_on_wall + 1
@@ -17,19 +22,19 @@ func _physics_process(_d):
 	velocity.y += 30
 	velocity.y = clamp(velocity.y, -INF, 200) if is_on_wall_only() else velocity.y
 	velocity.y = 0 if I.last_z_release == 1 and velocity.y < 0 else velocity.y
-	if I.last_z_press <= 5:
+	if I.last_z_press <= 5 and not state == PlayerState.ATTACKING:
+		var success = false
 		if last_on_floor < 5:
-
-			velocity.y = -700
 			last_on_floor = 6
-			I.last_z_press = 6
+			success = true
 		if last_on_wall <= 5:
-			sprite.jumpsound()
-			sprite.stepsound()
-			velocity.y = -700
-			velocity.x = sign(last_wall_normal) * 700
-			sprite.dir = sign(last_wall_normal)
 			last_on_wall = 6
+			velocity.x = sign(last_wall_normal) * 700
+			success = true
+		if success:
+			velocity.y = -700
+			I.last_z_press = 6
+
 
 	if I.shift_pressed:
 		var target_speed = I.d.x * 600
@@ -39,7 +44,21 @@ func _physics_process(_d):
 		velocity.x = move_toward(velocity.x, I.d.x * 300, 80)
 	velocity.y = clamp(velocity.y, -INF, 1000)
 	move_and_slide()
-
-
+	
+	if state == PlayerState.GENERAL and I.last_x_press == 1:
+		if I.d.y == -1:
+			state = PlayerState.ATTACKING
+			hitboxes.spawn("circle", 30, 0, 5, 45, 0.1)
+	
+func _frame_changed():
+	pass
+func _anim_finished():
+	if sprite.animation.contains("attack"):
+		sprite.play("none")
+		state = PlayerState.GENERAL
+func hit_confirmed():
+	if sprite.animation == "attackdown":
+		velocity.y = -700
+	sprite.slashsound()
 func _on_hurt(damage: int) -> void:
 	health -= damage

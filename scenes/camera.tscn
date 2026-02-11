@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://x2ujcibe8d52"]
+[gd_scene format=3 uid="uid://x2ujcibe8d52"]
 
-[ext_resource type="Script" uid="uid://dgxnh0p47iogl" path="res://scripts/globalcamera.gd" id="1_cvpoc"]
+[ext_resource type="Script" uid="uid://dgxnh0p47iogl" path="res://scripts/global_camera.gd" id="1_cvpoc"]
 
-[node name="Camera" type="Camera2D"]
+[node name="Camera" type="Camera2D" unique_id=1086003164]
 process_callback = 0
 limit_enabled = false
 position_smoothing_enabled = true
