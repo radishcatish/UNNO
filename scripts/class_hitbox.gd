@@ -2,15 +2,16 @@ extends Area2D
 class_name Hitbox
 
 
-
+var time
 var damage := 1
 var knockback := Vector2.ZERO
 var hit : Array = []
 func _ready():
 	connect("body_entered", Callable(self, "_on_body_entered"))
 
-func _physics_process(_d):
-	print(get_parent().myparent)
+func _physics_process(d):
+	time -= d
+	if time < 0: queue_free()
 	for area in get_overlapping_areas():
 		
 		if  area == self: continue
@@ -21,4 +22,4 @@ func _physics_process(_d):
 			get_parent().myparent.hit_confirmed()
 			
 			
-		
+	

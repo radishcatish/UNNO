@@ -13,7 +13,7 @@ func _ready():
 	sprite.frame_changed.connect(_frame_changed)
 	sprite.animation_finished.connect(_anim_finished)
 func _physics_process(_d):
-	hitboxes.scale.x = sprite.dir
+	
 	last_on_floor = 0 if is_on_floor() else last_on_floor + 1
 	last_off_floor = 0 if not is_on_floor() else last_off_floor + 1
 	last_on_wall = 0 if is_on_wall_only() else last_on_wall + 1
@@ -45,11 +45,16 @@ func _physics_process(_d):
 	velocity.y = clamp(velocity.y, -INF, 1000)
 	move_and_slide()
 	
-	if state == PlayerState.GENERAL and I.last_x_press == 1:
-		if I.d.y == -1:
+	if state == PlayerState.GENERAL and I.last_x_press < 5:
+		if I.d.y == -1 and not is_on_floor():
 			state = PlayerState.ATTACKING
-			hitboxes.spawn("circle", 30, 0, 5, 45, 0.1)
-	
+			hitboxes.spawn("circle", 30, 0, 5, 45, 0.15)
+		elif I.d.y == 1:
+			state = PlayerState.ATTACKING
+			hitboxes.spawn("circle", 35, 0, 0, -50, 0.15)
+		else:
+			state = PlayerState.ATTACKING
+			hitboxes.spawn("circle", 35, 0, 55, 5, 0.15)
 func _frame_changed():
 	pass
 func _anim_finished():
@@ -59,6 +64,7 @@ func _anim_finished():
 func hit_confirmed():
 	if sprite.animation == "attackdown":
 		velocity.y = -700
+	await get_tree().create_timer(0.08).timeout
 	sprite.slashsound()
 func _on_hurt(damage: int) -> void:
 	health -= damage

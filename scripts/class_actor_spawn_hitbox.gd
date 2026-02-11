@@ -19,5 +19,4 @@ func spawn(type: String, xsize: float, ysize: float, xpos: float, ypos: float, t
 
 	self.add_child(area)
 	area.add_child(col)
-	await get_tree().create_timer(time).timeout
-	area.queue_free()
+	area.time = time

@@ -1,12 +1,12 @@
 extends Node
-var last_z_press: int = 0
-var last_x_press: int = 0
-var last_c_press: int = 0
-var last_shift_press: int = 0
-var last_z_release: int = 0
-var last_x_release: int = 0
-var last_c_release: int = 0
-var last_shift_release: int = 0
+var last_z_press: int = 0999
+var last_x_press: int = 0999
+var last_c_press: int = 0999
+var last_shift_press: int = 0999
+var last_z_release: int = 0999
+var last_x_release: int = 0999
+var last_c_release: int = 0999
+var last_shift_release: int = 0999
 var z_pressed: bool = false
 var x_pressed: bool = false
 var c_pressed: bool = false

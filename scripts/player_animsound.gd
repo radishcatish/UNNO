@@ -6,6 +6,7 @@ extends AnimatedSprite2D
 @onready var slash: AudioStreamPlayer2D = $Slash
 @onready var ouch: AudioStreamPlayer2D = $Ouch
 @onready var jump: AudioStreamPlayer2D = $Jump
+@onready var hitboxes: Node2D = $"../Hitboxes"
 
 @onready var dir = 1
 
@@ -62,12 +63,17 @@ func _process(_d):
 					var t = clamp((-main.velocity.y + 300.0) / 500.0, 0.0, 1.0)
 					frame = int(t * 4)
 		main.PlayerState.ATTACKING:
+			if not I.last_x_press == 1 or animation.contains("attack"): return
 			if main.is_on_wall():
 				flip_h = false if main.last_wall_normal == 1 else true
-			if I.d.y == -1:
+				dir = main.last_wall_normal 
+			if I.d.y == -1 and not main.is_on_floor():
 				play("attackdown")
-
-				
+			elif I.d.y == 1:
+				play("attackup")
+			else:
+				play("attackforward")
+	hitboxes.scale.x = dir
 func _on_frame_changed():
 	match animation:
 		"walk":
