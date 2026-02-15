@@ -23,11 +23,11 @@ boot_splash/use_filter=false
 
 Camera="*res://scenes/camera.tscn"
 I="*res://scenes/radinput.tscn"
-GameDisplay="*res://scenes/gamedisplay.tscn"
 
 [display]
 
 window/size/initial_position_type=4
+window/stretch/mode="viewport"
 window/stretch/scale=2.0
 
 [dotnet]
@@ -52,12 +52,6 @@ folder_colors={
 "res://sounds/": "blue",
 "res://sprites/": "purple"
 }
-
-[global_group]
-
-Player=""
-Enemy=""
-Pogo=""
 
 [input]
 

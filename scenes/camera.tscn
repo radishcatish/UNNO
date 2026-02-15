@@ -10,3 +10,5 @@ position_smoothing_speed = 10.0
 drag_top_margin = 0.5
 drag_bottom_margin = 0.0
 script = ExtResource("1_cvpoc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=293923832]

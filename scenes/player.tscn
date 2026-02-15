@@ -24,8 +24,14 @@ size = Vector2(14, 26)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4r1p"]
 size = Vector2(8, 30)
 
-[node name="Unno" type="CharacterBody2D" unique_id=1535607073]
+[node name="Unno" type="CharacterBody2D" unique_id=1535607073 groups=["Player"]]
 script = ExtResource("1_l86uq")
+
+[node name="StunTime" type="Timer" parent="." unique_id=1282949850]
+one_shot = true
+
+[node name="InvTime" type="Timer" parent="." unique_id=45597580]
+one_shot = true
 
 [node name="Hitboxes" type="Node2D" parent="." unique_id=322026806 node_paths=PackedStringArray("myparent", "myhurtbox")]
 script = ExtResource("2_ur7pv")
@@ -51,6 +57,7 @@ stream = ExtResource("7_smehm")
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="Sprite" unique_id=1185629788]
 stream = ExtResource("7_fjrip")
+volume_db = -10.0
 
 [node name="Slash" type="AudioStreamPlayer2D" parent="Sprite" unique_id=6144336]
 stream = ExtResource("11_jej6c")
@@ -63,7 +70,7 @@ position = Vector2(0, 35)
 shape = SubResource("RectangleShape2D_38lr1")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=803282075]
-polygon = PackedVector2Array(-7, 22, 7, 22, 0, -26)
+polygon = PackedVector2Array(-7, 22, 7, 22, 0, -19)
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=64553328]
 script = ExtResource("3_y4r1p")

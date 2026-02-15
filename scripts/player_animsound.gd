@@ -7,32 +7,37 @@ extends AnimatedSprite2D
 @onready var ouch: AudioStreamPlayer2D = $Ouch
 @onready var jump: AudioStreamPlayer2D = $Jump
 @onready var hitboxes: Node2D = $"../Hitboxes"
+@onready var inv_time: Timer = $"../InvTime"
 
 @onready var dir = 1
 
 func _ready() -> void:
 	self.frame_changed.connect(_on_frame_changed)
 	self.animation_changed.connect(_on_animation_changed)
+
 func _process(_d):
 	if main.state != main.PlayerState.ATTACKING:
 		dir = I.d.x if I.d.x != 0 else dir
-		flip_h = false if dir == 1 else true
+	flip_h = false if dir == 1 else true
+	
+	if Engine.get_frames_drawn() % 3 == 0 and not inv_time.is_stopped():
+		visible = !visible
+	else:
+		visible = true
+		
 	Camera.target = main.global_position
 	if main.last_off_floor == 1:
 		stepsound()
-	if I.last_z_release == 1 and main.last_on_floor > 0:
+	if I.last_z_release == 1 and main.last_on_floor > 0 or main.velocity.y > 0:
 		for i in range(3):
 			await get_tree().create_timer(0.01).timeout
 			jump.volume_db -= 10
 			if i == 3: jump.volume_db = 0
 	if I.last_z_press <= 8:
 		if main.last_on_floor == 8:
-			jump.volume_db = 0
-			jumpsound()
+			jump.volume_db = -10
 		if main.last_on_wall == 8:
-			jump.volume_db = 0
-			jumpsound()
-			stepsound()
+			jump.volume_db = -10
 
 			
 	match main.state:
@@ -54,7 +59,12 @@ func _process(_d):
 						if not I.shift_pressed:
 							play("walk")
 					else:
-						play("idle")
+						if I.d.y == -1:
+							play("lookdown")
+						elif I.d.y == 1:
+							play("lookup")
+						else:
+							play("idle")
 				else:
 					if main.is_on_wall():
 						play("onwall")
@@ -62,17 +72,13 @@ func _process(_d):
 						play("midair")
 					var t = clamp((-main.velocity.y + 300.0) / 500.0, 0.0, 1.0)
 					frame = int(t * 4)
+					
 		main.PlayerState.ATTACKING:
-			if not I.last_x_press == 1 or animation.contains("attack"): return
 			if main.is_on_wall():
-				flip_h = false if main.last_wall_normal == 1 else true
-				dir = main.last_wall_normal 
-			if I.d.y == -1 and not main.is_on_floor():
-				play("attackdown")
-			elif I.d.y == 1:
-				play("attackup")
-			else:
-				play("attackforward")
+				dir = main.last_wall_normal
+		main.PlayerState.OUCH:
+			play("ouch")
+
 	hitboxes.scale.x = dir
 func _on_frame_changed():
 	match animation:
@@ -103,6 +109,7 @@ func random_sfx(a, b):
 		b.play()
 func jumpsound():
 	random_sfx(jump, jump)
+
 func stepsound():
 	random_sfx(step_1, step_2)
 func swishsound():
