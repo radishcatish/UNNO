@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://s0cbyg0ob5js"]
+
+[ext_resource type="Script" uid="uid://c174rnbqnfx66" path="res://scripts/enemy_bug.gd" id="1_8oc5g"]
+[ext_resource type="Script" uid="uid://c40u4xs8r3ic0" path="res://scripts/class_actor_spawn_hitbox.gd" id="2_0t6l1"]
+[ext_resource type="SpriteFrames" uid="uid://cj5gq2uh3q7j1" path="res://sprites/bug.aseprite" id="2_evhp6"]
+[ext_resource type="Script" uid="uid://dvno8c8hne8g4" path="res://scripts/hurtbox.gd" id="3_1cphh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t77sq"]
+size = Vector2(16, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0t6l1"]
+size = Vector2(28, 30)
+
+[node name="Bug" type="CharacterBody2D" unique_id=1013493063]
+script = ExtResource("1_8oc5g")
+metadata/_custom_type_script = "uid://rrxqcy22jqb"
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=33498321]
+sprite_frames = ExtResource("2_evhp6")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1766113436]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_t77sq")
+
+[node name="Hitboxes" type="Node2D" parent="." unique_id=86568638 node_paths=PackedStringArray("myparent", "myhurtbox")]
+script = ExtResource("2_0t6l1")
+myparent = NodePath("..")
+myhurtbox = NodePath("../Hurtbox")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=418871469]
+visible = false
+script = ExtResource("3_1cphh")
+
+[node name="bottom" type="CollisionShape2D" parent="Hurtbox" unique_id=1740236109]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_0t6l1")
+debug_color = Color(0.77362734, 0.4426994, 1.1551381e-06, 0.41960785)

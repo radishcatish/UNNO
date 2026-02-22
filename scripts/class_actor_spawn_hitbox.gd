@@ -16,6 +16,10 @@ func spawn(type: String, xsize: float, ysize: float, xpos: float, ypos: float, t
 		circle.radius = xsize
 		col.shape = circle
 		
+	if type == "rectangle":
+		var rect = RectangleShape2D.new()
+		rect.size = Vector2(xsize, ysize)
+		col.shape = rect
 
 	self.add_child(area)
 	area.add_child(col)

@@ -19,7 +19,7 @@ shader_parameter/original_colors = PackedColorArray(1, 0, 0, 1, 0, 0, 1, 1, 0, 1
 shader_parameter/replace_colors = PackedColorArray(0.74456227, 0.84418166, 0.9794813, 1, 0.5364689, 0.074294604, 0.14248937, 1, 0.6830772, 0.6830774, 0.6830771, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38lr1"]
-size = Vector2(14, 26)
+size = Vector2(14, 68)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4r1p"]
 size = Vector2(8, 30)
@@ -66,11 +66,8 @@ stream = ExtResource("11_jej6c")
 stream = ExtResource("11_3v2ag")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=654084833]
-position = Vector2(0, 35)
+position = Vector2(0, 14)
 shape = SubResource("RectangleShape2D_38lr1")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=803282075]
-polygon = PackedVector2Array(-7, 22, 7, 22, 0, -19)
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=64553328]
 script = ExtResource("3_y4r1p")

@@ -8,17 +8,25 @@ extends AnimatedSprite2D
 @onready var jump: AudioStreamPlayer2D = $Jump
 @onready var hitboxes: Node2D = $"../Hitboxes"
 @onready var inv_time: Timer = $"../InvTime"
-
+const COLORSHADER = preload("res://shaders/colorshader.gdshader")
 @onready var dir = 1
 
 func _ready() -> void:
 	self.frame_changed.connect(_on_frame_changed)
 	self.animation_changed.connect(_on_animation_changed)
 
+	
+	var mat := ShaderMaterial.new()
+	mat.shader = COLORSHADER
+	mat.set_shader_parameter("original_colors", [Color(1, 0, 0), Color(0, 1, 0), Color(0, 0, 1)])
+	mat.set_shader_parameter("replace_colors", [Color.LAVENDER, Color.GHOST_WHITE, Color.WEB_MAROON])
+	
+	material = mat
+
 func _process(_d):
 	if main.state != main.PlayerState.ATTACKING:
 		dir = I.d.x if I.d.x != 0 else dir
-	flip_h = false if dir == 1 else true
+		flip_h = false if dir == 1 else true
 	
 	if Engine.get_frames_drawn() % 3 == 0 and not inv_time.is_stopped():
 		visible = !visible
@@ -74,8 +82,10 @@ func _process(_d):
 					frame = int(t * 4)
 					
 		main.PlayerState.ATTACKING:
-			if main.is_on_wall():
+			print(dir)
+			if main.is_on_wall_only():
 				dir = main.last_wall_normal
+				flip_h = false if main.last_wall_normal == 1 else true
 		main.PlayerState.OUCH:
 			play("ouch")
 

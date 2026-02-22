@@ -17,7 +17,9 @@ var movement_speed := 600.0
 enum PlayerState {GENERAL, ATTACKING, OUCH}
 var state := PlayerState.GENERAL
 func _ready():
-	health = 8
+	health = 100
+	max_health = 100
+	
 	sprite.frame_changed.connect(_frame_changed)
 	sprite.animation_finished.connect(_anim_finished)
 func _physics_process(_d):
@@ -104,4 +106,5 @@ func _on_hurt(damage: int) -> void:
 	state = PlayerState.OUCH
 	velocity.x = -400 * sprite.dir
 	velocity.y = -300
+	
 	sprite.ouchsound()

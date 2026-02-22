@@ -1,6 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://betarljxsq2la"]
+[gd_scene format=3 uid="uid://betarljxsq2la"]
 
 [ext_resource type="Texture2D" uid="uid://suxqxrnww8y4" path="res://sprites/tiles.png" id="1_86b3s"]
+[ext_resource type="Shader" uid="uid://62ybptbx7818" path="res://shaders/colorshader.gdshader" id="1_kly2d"]
+[ext_resource type="Script" uid="uid://dco7hccsw3jms" path="res://scripts/basetilescolorsetup.gd" id="3_ee8g7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ee8g7"]
+shader = ExtResource("1_kly2d")
+shader_parameter/original_colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/replace_colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_83mgr"]
 texture = ExtResource("1_86b3s")
@@ -191,8 +198,10 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.8508014, 0, 0.17958769, 1)
 sources/1 = SubResource("TileSetAtlasSource_83mgr")
 
-[node name="KimaoTileset" type="TileMapLayer"]
+[node name="Tileset" type="TileMapLayer" unique_id=1377377912]
+material = SubResource("ShaderMaterial_ee8g7")
 tile_set = SubResource("TileSet_gvx2r")
 occlusion_enabled = false
 use_kinematic_bodies = true
 navigation_enabled = false
+script = ExtResource("3_ee8g7")
