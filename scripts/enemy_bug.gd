@@ -9,7 +9,6 @@ var up: float = randf()
 @onready var bughiss: AudioStreamPlayer2D = $Bughiss
 @onready var bughurt: AudioStreamPlayer2D = $Bughurt
 @onready var hitboxes: Node2D = $Hitboxes
-
 const COLORSHADER = preload("res://shaders/colorshader.gdshader")
 func _ready():
 	health = 20
@@ -42,8 +41,11 @@ func _physics_process(_d):
 		else:
 			sprite.play("die")
 			actionable = false
-			stun_time.start(999)
 			$CollisionShape2D.disabled = true
+			if stun_time.is_stopped():
+				self.queue_free()
+				
+	
 	
 	
 	if actionable:
@@ -80,4 +82,5 @@ func _on_hurt(damage: Variant, dir: Variant) -> void:
 	bughurt.play()
 	if health <= 0:
 		bughiss.play()
+		stun_time.start(10)
 		

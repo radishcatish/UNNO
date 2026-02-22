@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://2vg0r3u2okwe"
+path="res://.godot/imported/poof.sfxr-11594a795b6d4eff428025c52369bdaf.sample"
+
+[deps]
+
+source_file="res://sounds/poof.sfxr"
+dest_files=["res://.godot/imported/poof.sfxr-11594a795b6d4eff428025c52369bdaf.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0
