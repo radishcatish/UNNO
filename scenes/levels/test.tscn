@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://betarljxsq2la" path="res://scenes/resources/basetiles.tscn" id="1_8153q"]
 [ext_resource type="PackedScene" uid="uid://do45pk2vyjfhw" path="res://scenes/player.tscn" id="2_52kye"]
+[ext_resource type="PackedScene" uid="uid://s0cbyg0ob5js" path="res://scenes/enemies/bug.tscn" id="3_yp2xm"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_52kye"]
 
@@ -47,3 +48,33 @@ metadata/_edit_lock_ = true
 
 [node name="player" parent="." unique_id=497839761 instance=ExtResource("2_52kye")]
 position = Vector2(0, 24)
+
+[node name="Bug" parent="." unique_id=1013493063 instance=ExtResource("3_yp2xm")]
+position = Vector2(-248, 48)
+
+[node name="Bug2" parent="." unique_id=174926491 instance=ExtResource("3_yp2xm")]
+position = Vector2(-248, 48)
+
+[node name="Bug3" parent="." unique_id=602570242 instance=ExtResource("3_yp2xm")]
+position = Vector2(-248, 48)
+
+[node name="Bug4" parent="." unique_id=963247392 instance=ExtResource("3_yp2xm")]
+position = Vector2(-248, 48)
+
+[node name="Bug5" parent="." unique_id=1259157086 instance=ExtResource("3_yp2xm")]
+position = Vector2(-248, 48)
+
+[node name="Bug6" parent="." unique_id=1614359501 instance=ExtResource("3_yp2xm")]
+position = Vector2(-248, 48)
+
+[node name="Bug7" parent="." unique_id=222260638 instance=ExtResource("3_yp2xm")]
+position = Vector2(-248, 48)
+
+[node name="Bug8" parent="." unique_id=1299255221 instance=ExtResource("3_yp2xm")]
+position = Vector2(-248, 48)
+
+[node name="Bug9" parent="." unique_id=940668326 instance=ExtResource("3_yp2xm")]
+position = Vector2(-248, 48)
+
+[node name="Bug10" parent="." unique_id=931774385 instance=ExtResource("3_yp2xm")]
+position = Vector2(-248, 48)

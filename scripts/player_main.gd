@@ -1,4 +1,5 @@
 extends Actor
+class_name Player
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var hitboxes: Node2D = $Hitboxes
 @onready var stun_timer: Timer = $StunTime
@@ -14,6 +15,7 @@ var stuntime := .3
 var gravity := 30.0
 var jump_strength := 600.0
 var movement_speed := 600.0
+var base_damage := 5
 enum PlayerState {GENERAL, ATTACKING, OUCH}
 var state := PlayerState.GENERAL
 func _ready():
@@ -24,7 +26,7 @@ func _ready():
 	sprite.animation_finished.connect(_anim_finished)
 func _physics_process(_d):
 	if I.last_c_press == 1:
-		apply_damage(1)
+		apply_damage(1, Vector2.ZERO)
 	last_on_floor = 0 if is_on_floor() else last_on_floor + 1
 	last_off_floor = 0 if not is_on_floor() else last_off_floor + 1
 	last_on_wall = 0 if is_on_wall_only() else last_on_wall + 1
@@ -66,7 +68,7 @@ func _physics_process(_d):
 		if I.d.y == -1 and not is_on_floor():
 			sprite.play("attackdown")
 			state = PlayerState.ATTACKING
-			hitboxes.spawn("circle", 30, 0, 5, 45, 0.2)
+			hitboxes.spawn("circle", 30, 0, 5, 45, 0.2, Vector2(sprite.dir, -1), base_damage)
 			velocity.x = movement_speed  * sprite.dir
 			if velocity.y < movement_speed / 2:
 				velocity.y = movement_speed / 2
@@ -77,11 +79,11 @@ func _physics_process(_d):
 			velocity.y = 0.0 if velocity.y > 1.0 else velocity.y - movement_speed / 10.0
 			
 			state = PlayerState.ATTACKING
-			hitboxes.spawn("circle", 35, 0, 0, -50, 0.15)
+			hitboxes.spawn("circle", 35, 0, 0, -50, 0.15, Vector2(0, 1), base_damage)
 		else:
 			sprite.play("attackforward")
 			state = PlayerState.ATTACKING
-			hitboxes.spawn("circle", 35, 0, 55, 5, 0.15)
+			hitboxes.spawn("circle", 35, 0, 55, 5, 0.15, Vector2(sprite.dir, 0), base_damage)
 
 func _frame_changed():
 	pass
@@ -95,10 +97,10 @@ func hit_confirmed():
 		if sprite.animation == "attackdown":
 			velocity.y = -jump_strength
 		if sprite.animation == "attackup":
-			velocity.y += 500
+			velocity.y = 500
 		if sprite.animation == "attackforward":
-			velocity.x += sprite.dir * -600
-func _on_hurt(damage: int) -> void:
+			velocity.x = sprite.dir * -600
+func _on_hurt(damage: int, dir: Vector2) -> void:
 	if not inv_timer.is_stopped(): return
 	health -= damage
 	stun_timer.start(stuntime)

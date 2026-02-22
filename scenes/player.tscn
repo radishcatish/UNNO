@@ -25,6 +25,7 @@ size = Vector2(14, 68)
 size = Vector2(8, 30)
 
 [node name="Unno" type="CharacterBody2D" unique_id=1535607073 groups=["Player"]]
+collision_layer = 0
 script = ExtResource("1_l86uq")
 
 [node name="StunTime" type="Timer" parent="." unique_id=1282949850]

@@ -4,8 +4,6 @@
 [ext_resource type="Script" uid="uid://c40u4xs8r3ic0" path="res://scripts/class_actor_spawn_hitbox.gd" id="2_0t6l1"]
 [ext_resource type="SpriteFrames" uid="uid://cj5gq2uh3q7j1" path="res://sprites/bug.aseprite" id="2_evhp6"]
 [ext_resource type="Script" uid="uid://dvno8c8hne8g4" path="res://scripts/hurtbox.gd" id="3_1cphh"]
-[ext_resource type="AudioStream" uid="uid://01xrk4tdtuiq" path="res://sounds/bughiss.sfxr" id="5_wgkba"]
-[ext_resource type="AudioStream" uid="uid://j07jg8cst0t5" path="res://sounds/bughurt.sfxr" id="6_cqyu5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t77sq"]
 size = Vector2(16, 30)
@@ -13,19 +11,10 @@ size = Vector2(16, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0t6l1"]
 size = Vector2(28, 30)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgkba"]
-size = Vector2(300, 100)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqyu5"]
-size = Vector2(1000, 500)
-
 [node name="Bug" type="CharacterBody2D" unique_id=1013493063]
 collision_layer = 0
 script = ExtResource("1_8oc5g")
 metadata/_custom_type_script = "uid://rrxqcy22jqb"
-
-[node name="StunTime" type="Timer" parent="." unique_id=832799656]
-one_shot = true
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=33498321]
 sprite_frames = ExtResource("2_evhp6")
@@ -48,27 +37,5 @@ script = ExtResource("3_1cphh")
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_0t6l1")
 debug_color = Color(0.77362734, 0.4426994, 1.1551381e-06, 0.41960785)
-
-[node name="JumpRadius" type="Area2D" parent="." unique_id=379838707]
-visible = false
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="JumpRadius" unique_id=746050830]
-position = Vector2(0, -27)
-shape = SubResource("RectangleShape2D_wgkba")
-
-[node name="DetectRadius" type="Area2D" parent="." unique_id=1874549815]
-visible = false
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRadius" unique_id=430847274]
-position = Vector2(0, -27)
-shape = SubResource("RectangleShape2D_cqyu5")
-
-[node name="Bughiss" type="AudioStreamPlayer2D" parent="." unique_id=484113641]
-stream = ExtResource("5_wgkba")
-
-[node name="Bughurt" type="AudioStreamPlayer2D" parent="." unique_id=1659390951]
-stream = ExtResource("6_cqyu5")
 
 [connection signal="hurt" from="." to="." method="_on_hurt"]

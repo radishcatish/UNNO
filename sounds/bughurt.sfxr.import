@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://j07jg8cst0t5"
+path="res://.godot/imported/bughurt.sfxr-53a239c00aa6d0ff144444fe6cde7887.sample"
+
+[deps]
+
+source_file="res://sounds/bughurt.sfxr"
+dest_files=["res://.godot/imported/bughurt.sfxr-53a239c00aa6d0ff144444fe6cde7887.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

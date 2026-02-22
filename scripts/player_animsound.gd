@@ -82,7 +82,7 @@ func _process(_d):
 					frame = int(t * 4)
 					
 		main.PlayerState.ATTACKING:
-			print(dir)
+		
 			if main.is_on_wall_only():
 				dir = main.last_wall_normal
 				flip_h = false if main.last_wall_normal == 1 else true

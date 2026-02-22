@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://01xrk4tdtuiq"
+path="res://.godot/imported/bughiss.sfxr-6ea562581a7348caa7e96efa166729fc.sample"
+
+[deps]
+
+source_file="res://sounds/bughiss.sfxr"
+dest_files=["res://.godot/imported/bughiss.sfxr-6ea562581a7348caa7e96efa166729fc.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

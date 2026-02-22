@@ -7,7 +7,7 @@ extends Node2D
 @export var myhurtbox : Node
 const HITBOX = preload("uid://d0qbv01611bi")
 
-func spawn(type: String, xsize: float, ysize: float, xpos: float, ypos: float, time: float):
+func spawn(type: String, xsize: float, ysize: float, xpos: float, ypos: float, time: float, dir: Vector2, damage: int):
 	var area = HITBOX.instantiate()
 	area.position = Vector2(xpos, ypos)
 	var col = CollisionShape2D.new()
@@ -20,7 +20,10 @@ func spawn(type: String, xsize: float, ysize: float, xpos: float, ypos: float, t
 		var rect = RectangleShape2D.new()
 		rect.size = Vector2(xsize, ysize)
 		col.shape = rect
-
+	area.dir = dir
+	area.damage = damage
+	if myparent is not Player:
+		area.enemy = true
 	self.add_child(area)
 	area.add_child(col)
 	area.time = time
