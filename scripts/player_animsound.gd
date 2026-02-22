@@ -27,7 +27,9 @@ func _process(_d):
 	if main.state != main.PlayerState.ATTACKING:
 		dir = I.d.x if I.d.x != 0 else dir
 		flip_h = false if dir == 1 else true
-	
+	if main.is_on_wall_only():
+		dir = main.last_wall_normal
+		flip_h = false if main.last_wall_normal == 1 else true
 	if Engine.get_frames_drawn() % 3 == 0 and not inv_time.is_stopped():
 		visible = !visible
 	else:
@@ -46,7 +48,7 @@ func _process(_d):
 			jump.volume_db = -10
 		if main.last_on_wall == 8:
 			jump.volume_db = -10
-
+	
 			
 	match main.state:
 		main.PlayerState.GENERAL:
@@ -81,11 +83,6 @@ func _process(_d):
 					var t = clamp((-main.velocity.y + 300.0) / 500.0, 0.0, 1.0)
 					frame = int(t * 4)
 					
-		main.PlayerState.ATTACKING:
-		
-			if main.is_on_wall_only():
-				dir = main.last_wall_normal
-				flip_h = false if main.last_wall_normal == 1 else true
 		main.PlayerState.OUCH:
 			play("ouch")
 

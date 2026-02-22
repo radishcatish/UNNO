@@ -25,8 +25,7 @@ func _ready():
 	sprite.frame_changed.connect(_frame_changed)
 	sprite.animation_finished.connect(_anim_finished)
 func _physics_process(_d):
-	if I.last_c_press == 1:
-		apply_damage(1, Vector2.ZERO)
+
 	last_on_floor = 0 if is_on_floor() else last_on_floor + 1
 	last_off_floor = 0 if not is_on_floor() else last_off_floor + 1
 	last_on_wall = 0 if is_on_wall_only() else last_on_wall + 1

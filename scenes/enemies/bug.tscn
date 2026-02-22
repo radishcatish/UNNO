@@ -17,7 +17,7 @@ size = Vector2(28, 30)
 size = Vector2(300, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqyu5"]
-size = Vector2(1000, 500)
+size = Vector2(1000, 100)
 
 [node name="Bug" type="CharacterBody2D" unique_id=1013493063]
 collision_layer = 0
@@ -41,7 +41,6 @@ myparent = NodePath("..")
 myhurtbox = NodePath("../Hurtbox")
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=418871469]
-visible = false
 script = ExtResource("3_1cphh")
 
 [node name="bottom" type="CollisionShape2D" parent="Hurtbox" unique_id=1740236109]
@@ -50,18 +49,18 @@ shape = SubResource("RectangleShape2D_0t6l1")
 debug_color = Color(0.77362734, 0.4426994, 1.1551381e-06, 0.41960785)
 
 [node name="JumpRadius" type="Area2D" parent="." unique_id=379838707]
-visible = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JumpRadius" unique_id=746050830]
+visible = false
 position = Vector2(0, -27)
 shape = SubResource("RectangleShape2D_wgkba")
 
 [node name="DetectRadius" type="Area2D" parent="." unique_id=1874549815]
-visible = false
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRadius" unique_id=430847274]
+visible = false
 position = Vector2(0, -27)
 shape = SubResource("RectangleShape2D_cqyu5")
 
