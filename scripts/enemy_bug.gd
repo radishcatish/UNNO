@@ -47,7 +47,7 @@ func _physics_process(_d):
 	
 	
 	if actionable:
-		up += 0.1
+		up += randf_range(0.05, 0.1)
 		movementwave = sin(up)
 		if movementwave < -0.9:
 			for area in detect_radius.get_overlapping_areas():

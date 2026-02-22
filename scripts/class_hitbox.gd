@@ -2,7 +2,7 @@ extends Area2D
 class_name Hitbox
 
 var enemy := false
-var time := 1
+var time := 0.1
 var damage := 1
 var dir := Vector2.ZERO
 var hit : Array = []
