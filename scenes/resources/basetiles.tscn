@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://suxqxrnww8y4" path="res://sprites/tiles.png" id="1_86b3s"]
 [ext_resource type="Shader" uid="uid://62ybptbx7818" path="res://shaders/colorshader.gdshader" id="1_kly2d"]
-[ext_resource type="Script" uid="uid://dco7hccsw3jms" path="res://scripts/basetilescolorsetup.gd" id="3_ee8g7"]
+[ext_resource type="Script" uid="uid://dco7hccsw3jms" path="res://scripts/tiles_base.gd" id="3_ee8g7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ee8g7"]
 shader = ExtResource("1_kly2d")

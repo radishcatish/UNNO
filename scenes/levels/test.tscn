@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://0gs020owd4b7"]
 
 [ext_resource type="PackedScene" uid="uid://betarljxsq2la" path="res://scenes/resources/basetiles.tscn" id="1_8153q"]
-[ext_resource type="PackedScene" uid="uid://do45pk2vyjfhw" path="res://scenes/player.tscn" id="2_52kye"]
+[ext_resource type="PackedScene" uid="uid://do45pk2vyjfhw" path="res://scenes/objects/player.tscn" id="2_52kye"]
 [ext_resource type="PackedScene" uid="uid://s0cbyg0ob5js" path="res://scenes/enemies/bug.tscn" id="3_yp2xm"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_52kye"]

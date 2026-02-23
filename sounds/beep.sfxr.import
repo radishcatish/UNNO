@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://dcxv2jvajv8eo"
+path="res://.godot/imported/beep.sfxr-bc4e896a5e071674e4f1e12c2d1b603f.sample"
+
+[deps]
+
+source_file="res://sounds/beep.sfxr"
+dest_files=["res://.godot/imported/beep.sfxr-bc4e896a5e071674e4f1e12c2d1b603f.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

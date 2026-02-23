@@ -5,7 +5,7 @@
 [ext_resource type="SpriteFrames" uid="uid://o0kqp6hivjrh" path="res://sprites/unno.aseprite" id="2_qhqgy"]
 [ext_resource type="Script" uid="uid://c40u4xs8r3ic0" path="res://scripts/class_actor_spawn_hitbox.gd" id="2_ur7pv"]
 [ext_resource type="Script" uid="uid://oy1nbjhvs4yo" path="res://scripts/player_animsound.gd" id="3_xkgla"]
-[ext_resource type="Script" uid="uid://dvno8c8hne8g4" path="res://scripts/hurtbox.gd" id="3_y4r1p"]
+[ext_resource type="Script" uid="uid://dvno8c8hne8g4" path="res://scripts/class_hurtbox.gd" id="3_y4r1p"]
 [ext_resource type="AudioStream" uid="uid://d34102mwj5prp" path="res://sounds/step1.sfxr" id="5_tuyoq"]
 [ext_resource type="AudioStream" uid="uid://cf16f8rw0i505" path="res://sounds/step2.sfxr" id="6_fjrip"]
 [ext_resource type="AudioStream" uid="uid://bx1s4ks5esa0i" path="res://sounds/jump.sfxr" id="7_fjrip"]

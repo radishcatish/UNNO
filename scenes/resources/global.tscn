@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c22e6uspw55cu"]
+
+[ext_resource type="Script" uid="uid://bts8hg88clm3a" path="res://scripts/global_scripts.gd" id="1_vjddt"]
+[ext_resource type="AudioStream" uid="uid://dcxv2jvajv8eo" path="res://sounds/beep.sfxr" id="2_2xkm4"]
+
+[node name="Global" type="Node" unique_id=1862659414]
+script = ExtResource("1_vjddt")
+
+[node name="Beep" type="AudioStreamPlayer" parent="." unique_id=1418539037]
+stream = ExtResource("2_2xkm4")
